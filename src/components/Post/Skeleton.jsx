@@ -6,16 +6,16 @@ import styles from "./Post.module.scss";
 
 export const PostSkeleton = () => {
   return (
-    <div className={styles.skeleton}>
+    <div  className={styles.skeleton}>
       <Stack spacing={1}>
-        <Skeleton variant="rectangular" width="100%" height={300} />
-        <div className={styles.skeletonContent}>
+        {/* <Skeleton variant="rectangular" width="100%" height={300} /> */}
+        <div  className={styles.skeletonContent}>
           <div className={styles.skeletonUser}>
             <Skeleton
               variant="circular"
               width={40}
               height={40}
-              style={{ marginRight: 10 }}
+              style={{ marginRight: 10}}
             />
             <div className={styles.skeletonUserDetails}>
               <Skeleton variant="text" width={60} height={20} />

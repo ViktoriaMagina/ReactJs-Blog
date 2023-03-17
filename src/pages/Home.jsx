@@ -4,7 +4,7 @@ import Tab from '@mui/material/Tab';
 import Grid from '@mui/material/Grid';
 
 import { Post } from '../components/Post';
-import { CommentsBlock } from '../components/CommentsBlock';
+// import { CommentsBlock } from '../components/CommentsBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts, fetchPopularPosts,fetchNewsPosts } from '../redux/slices/posts.js';
 
@@ -28,13 +28,13 @@ export const Home = () => {
   }
   return (
     <>
-      <Tabs style={{ marginBottom: 15 }} value={tab} aria-label="basic tabs example">
-        <Tab onClick={onClickNew} label="Новые" />
-        <Tab onClick={onClickPopular} label="Популярные" />
+      <Tabs style={{ marginBottom: 15, color: "white" }} value={tab} aria-label="basic tabs example">
+        <Tab style={{ color: "white" }} onClick={onClickNew} label="Новые" />
+        <Tab style={{ color: "white" }} onClick={onClickPopular} label="Популярные" />
       </Tabs>
       <Grid container spacing={4}>
-        <Grid xs={8} item>
-          {(isPostLoading ? [...Array(5)] : posts.items).map((item, index) =>
+        <Grid xs={10} item>
+          {(isPostLoading ? [...Array(3)] : posts.items).map((item, index) =>
           
             isPostLoading ? (
               <Post key={index} isLoading={true}/>
@@ -53,7 +53,7 @@ export const Home = () => {
             ),
           )}
         </Grid>
-        <Grid xs={4} item>
+        {/* <Grid xs={4} item>
           <CommentsBlock
             items={[
               {
@@ -73,7 +73,7 @@ export const Home = () => {
             ]}
             isLoading={false}
           />
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );

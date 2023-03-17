@@ -3,8 +3,8 @@ import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import SimpleMDE from 'react-simplemde-editor';
-import { useDispatch, useSelector, } from 'react-redux';
-
+import {useSelector, } from 'react-redux';
+import { Link } from 'react-router-dom';
 import 'easymde/dist/easymde.min.css';
 import styles from './AddPost.module.scss';
 import { Navigate ,useNavigate, useParams } from 'react-router-dom';
@@ -27,7 +27,7 @@ export const AddPost = () => {
         tags,
         text
       }
-      const {data} = isEditing? await axios.patch(`/posts/${id}`, fields) :await axios.post("/posts", fields) 
+      const {data} = isEditing? await axios.patch(`/posts/${id}`, fields) : await axios.post("/posts", fields) 
       const _id = isEditing? id: data._id
       navigate(`/posts/${_id}`)
     } catch (error) {
@@ -59,14 +59,14 @@ export const AddPost = () => {
         setTitle(res.data.title)
         setText(res.data.text)
         setTags(res.data.tags)
-        
-        
       }).catch(err => console.log(err))
     }
   }, [])
+
   if (!window.localStorage.getItem('token') && !isAuth) {
     return <Navigate to={'/'} />;
   }
+
   return (
     <Paper style={{ padding: 30 }}>
       <br />
@@ -85,9 +85,9 @@ export const AddPost = () => {
         <Button onClick={onSubmit} size="large" variant="contained">
           {isEditing? "Сохранить" : "Опубликовать"}
         </Button>
-        <a href="/">
+        <Link to="/">
           <Button size="large">Отмена</Button>
-        </a>
+        </Link>
       </div>
     </Paper>
   );

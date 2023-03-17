@@ -1,25 +1,28 @@
-import React from "react";
+import React from 'react';
 
-import { Post } from "../components/Post";
-import { Index } from "../components/AddComment";
-import { CommentsBlock } from "../components/CommentsBlock";
-import { useParams } from "react-router-dom";
-import axios from "../axios";
-import ReactMarkdown from 'react-markdown'
-
+import { Post } from '../components/Post';
+import { Index } from '../components/AddComment';
+import { CommentsBlock } from '../components/CommentsBlock';
+import { useParams } from 'react-router-dom';
+import axios from '../axios';
+import ReactMarkdown from 'react-markdown';
+import { Link } from 'react-router-dom';
 
 export const FullPost = () => {
-  const [data, setData] = React.useState()
-  const [isLoading, setIsLoading] = React.useState(true)
-  const {id} = useParams()
-  React.useEffect(()=> {
-    axios.get(`/posts/${id}`).then(({data})=> {
-      setData(data)
-      setIsLoading(false)
-    }).catch((error) => console.log(error))
-  }, [])
-  if(isLoading){
-    return <Post isLoading={isLoading}/>
+  const [data, setData] = React.useState();
+  const [isLoading, setIsLoading] = React.useState(true);
+  const { id } = useParams();
+  React.useEffect(() => {
+    axios
+      .get(`/posts/${id}`)
+      .then(({ data }) => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+  if (isLoading) {
+    return <Post isLoading={isLoading} />;
   }
   return (
     <>
@@ -31,11 +34,11 @@ export const FullPost = () => {
         viewsCount={data.viewsCount}
         commentsCount={3}
         tags={data.tags}
-        isFullPost
-      >
-    <ReactMarkdown children={data.text}/>,
+        isFullPost>
+        <ReactMarkdown children={data.text} />
       </Post>
-      <CommentsBlock
+      <Link style={{color: "white", textDecoration: "none"}} to={"/"}>Назад в ленту</Link>
+      {/* <CommentsBlock
         items={[
           {
             user: {
@@ -55,7 +58,7 @@ export const FullPost = () => {
         isLoading={false}
       >
         <Index />
-      </CommentsBlock>
+      </CommentsBlock> */}
     </>
   );
 };

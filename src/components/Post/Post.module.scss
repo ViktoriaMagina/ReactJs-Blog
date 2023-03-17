@@ -1,17 +1,13 @@
-$blue: #4361ee;
+$blue: #dddddd;
 
 .root {
-  background-color: #fff;
-  border: 1px solid #dedede;
+  background-color: #1c1c1c;
+  border: 1px solid rgb(14, 14, 14);
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 15px;
   position: relative;
-
   &:hover {
-    border: 1px solid $blue;
-    box-shadow: 0 0 0 1px $blue;
-
     .editButtons {
       opacity: 1;
     }
@@ -19,8 +15,6 @@ $blue: #4361ee;
 
   &Full {
     &:hover {
-      background-color: #fff;
-      border: 1px solid #dedede;
       box-shadow: none;
     }
   }
@@ -60,11 +54,7 @@ $blue: #4361ee;
 
   a {
     text-decoration: none;
-    color: #000;
-
-    &:hover {
-      color: $blue;
-    }
+    color: #fff;
   }
 
   &Full {
@@ -90,7 +80,7 @@ $blue: #4361ee;
 
     a {
       text-decoration: none;
-      color: #000;
+      color: #fff;
     }
   }
 }
@@ -151,7 +141,7 @@ $blue: #4361ee;
   position: absolute;
   right: 15px;
   top: 15px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #282828;
   border-radius: 10px;
   opacity: 0;
   transition: all 0.15s ease-in-out;
